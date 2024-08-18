@@ -1,0 +1,73 @@
+1. Whenever we make a project and we want data to be stored in the backend then we integrate with the database.
+2. Database will store the data inside that so that we can handle the data.
+
+RDBMS :
+3. RDBMS -> Relational database management system -> data is stored in the form of table.
+4. Example of RDBMS -> mysql, mariaDB, pgSql
+5. Whenever we do the interaction with RDBMS we call SQL-> Structured query language.
+
+NoSql :
+6. NoSql stands for not only sql.
+7. NoSql is a category of databases, which stores data in non-Relational fashion. i.e NoSql generally doesn't store the data in the form of table.
+8. The name NoSql is given because in most of the NoSql database, we don't write the sql queries like inserting, deleting, and updating and fetching data.
+9. Example of NoSql : mongoDB, CouchBase, Cassandra, ReThinkDB. 
+10. NoSql stores the data in the form of graph database.
+
+Types of NoSql Databases :
+11. Graph Database -> Neo4j -> store the data in the form of graph.
+12. Key-Value Database -> Redis -> open source database stores the data in the form of key-value pair.
+13. Document based database -> mongoDB
+
+JSON :
+14. json -> stands for javascript object notation.
+15. It is not actually related to JS it looks like js object. i.e if you makes a json file, js can't do much with it.
+16. json stores the data in the form of key value pair.
+17. json.parse is used to convert the json string to js object.
+18. json.stringify is used to convert the js object to json string.
+19. Both handle only single argument.
+20. In rest Api we store the data in teh form of JSON.
+UseCase : APi, configuration files, database storage.
+
+mongoDB :  It is case-sensitive.
+21. It is a NoSql database. It uses json like documents. it stores the data in the form of json. It is used for sending and recieving the data.
+22. Json doesn't have fixed length so it makes traversal slower.
+23. BSON -> Binary json which stores the data in binary form which makes the traversal faster as compared to json. 
+24. mongoDB uses json for sending and retrieving but internally it stores the data in bson format and it converting the json into bson format internally. 
+25. mongoDB is a document based database, which internally stores the data in the form of BSON, but we as a developer can send or recieve data in form of JSON, internally mongoDB manages the conversion of JSON-BSON and BSON-JSON automatically.
+
+Note : 
+Now when we use to store data in any RDBMS say mysql, data was stored inside a table. Table used to represent real life entity. Inside a table we had many rows. Rows used to represent one data record. column inside the table used to represent properties of the entity.
+
+i) Now in mongodb we store store data in form of documents(JSON like).
+ii) So here a real life entity is represented by Collections. What a table is for RDBMS is Collections for mongoDB.
+iii) Collections are group of JSON documents.
+iv) One record in a Collection is called as documents.What a row is for RDBMS is document for mongoDB.
+v) A document is nothing but a JSON (internally BSON), a JSON has multiple key-value pairs. The key of JSON represent the property of the entity. So what column is for RDBMS, key (from key-value pair) is for mongodb
+
+
+Command on mongoDB compass.
+26. List all the databases in mongoDB : show databases; or show dbs; -> this is shortcut command.
+How to select a particular DB to work on?
+27. To select particular db and start querying on it we use command : use name_of_db;
+How to print all the collections stored in a database ?
+28. To print all the Collections we can use : show Collections;
+Make sure, we run this command after executing use some_db otherwise we wont be having db selected.
+How to print all the documents of a collection ?
+29. To print all the documents of a collection we can use : db.collectionname.find();
+How to create a new database ?
+30. To create a new database we can do : use databasename. eg. use university
+The use command creates a new database if there is no already present db with the same name, otherwise if there is a db with the same name, it just selects it.
+31. Now what will happen is, after creating a DB, if we try to do show dbs; then it will not list our newly created database. Because, if mondodb sees that there is no valid collection added in the database, and the db is empty, it doesn’t list it.
+How to add a new collections ?
+32. To create a new collection we can do : db.createCollection("name of the collection)
+33. Make sure we execute this command after use some_db_name
+
+In normal RDBMS, while create a table, we have to define what will be the column of
+the table. Why we are not defining properties of a collection on mongodb ?
+This is because, mongodb doesn’t restrict us by any means for defining documents of a
+collection. Two documents of the same collection can posses different type of
+properties.
+
+How to add a new record to a collection ?
+34. To add a new record we can do : db.collectionname.insertOne({key:value pairs});
+To see the document of collection use : db.collectionname.find();
